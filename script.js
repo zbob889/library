@@ -41,13 +41,26 @@ bookButton.addEventListener('click', () => {
     let authorCell = row.insertCell(1);
     let pagesCell = row.insertCell(2);
     let statusCell = row.insertCell(3);
+    let removeButton = row.insertCell(4);
     titleCell.innerHTML = `${myLibrary[myLibrary.length - 1].title}`;
     authorCell.innerHTML = `${myLibrary[myLibrary.length - 1].author}`;
     pagesCell.innerHTML = `${myLibrary[myLibrary.length - 1].pages}`;
     statusCell.innerHTML = `${myLibrary[myLibrary.length - 1].status}`;
+    removeButton.innerHTML = `<button id='removeButton${myLibrary.length}'>Remove</button>`;
+
+    document.getElementById(`removeButton${myLibrary.length}`).addEventListener('click', () => {
+        myLibrary.splice(myLibrary.length - 1, 1);
+        libraryTable.deleteRow(myLibrary.length + 1);
+    });
 
     title.value = '';
     author.value = '';
     pages.value = '';
     status.value = '';
 });
+
+function createRemoveButton(){
+    for(let i = 0; i < myLibrary.length; i++){
+        let removeButton = document.getElementById(`removeButton${i+1}`)
+    }
+}
